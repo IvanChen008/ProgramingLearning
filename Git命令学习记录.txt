@@ -37,6 +37,22 @@ git 命令学习的记录
 		Git自动创建一个master分支，和一个指向master的指针HEAD
 		https://cdn.liaoxuefeng.com/cdn/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0
 		
+//管理文件的修改
+	Git比其他版本控制系统的优点在于，跟踪管理的是修改而不是文件，也就是说添加文件的操作内涵是，git add filename.xxx 将一次修改放入暂存区stage（index），git commit只负责将存入暂存区的内容提交了。
 		
-		
+		每次修改，如果不add到暂存区，那就不会加入到commit中了。
 
+//撤销修改
+		1、当你改乱了工作区的某个文件的内容，想直接去掉工作区的修改 
+		git checkout -- file  //可以丢弃掉工作区的修改,就是让这个文件回到最近一次 git commit 或 git add 时的状态。
+	
+		2、当你不但改乱了工作区的某个文件内容，还添加到了暂存区时，想丢弃修改，分两步，第一步使用 git reset HEAD file ，第二部按照情况1操作。
+		
+		3、已经提交了不合适的修改到版本库是，想要撤销本次提交，可以参照版本回退，不过前提是没有推送到远程库。
+
+//删除文件
+	使用 git rm filename.xxx 删除文件，使用 git commit -m "提示信息" 来提交删除
+	
+	当你在删除错误的情况下，可以使用 git checkout -- filename.xxx 来恢复文件
+	
+	如果一个文件被提交到版本库了，那么永远不用担心误删，但是要小心只能恢复到最新的版本，你会丢失最近一次提交后你修改的内容。
