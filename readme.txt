@@ -9,3 +9,5 @@ EarMaster 是一款来自丹麦的视唱练耳多媒体音乐教育软件，它以问答的交互形式，寓教于
 
 Git is a version control system.
 Git is free software.
+
+Gakki is my wife/
