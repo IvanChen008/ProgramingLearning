@@ -11,3 +11,18 @@ git init // 初始化一个Git仓库
 添加文件到一个仓库
 	1、使用 git add -filename.xxx-
 	2、使用 git commit -m "提交信息....."
+	
+git log 命令显示所有的提交日志，后加参数 --pretty=oneline  精简显示每次的日志 { 版本号 提示信息}
+
+使用 cat -filename.xxx- 显示文件内容
+
+使用 git reset --hard HEAD^ 回到前一个版本
+使用 git reset --hard HEAD^^ 回到前两个版本
+使用 git reset --hard HEAD^^^ 回到前三个版本
+
+版本过多可以使用 数字或者版本号回退
+使用 git reset --hard HEAD~n 回到前n个版本
+使用 git reset --hard commit-id 回到对应的版本
+
+在回退前可以 使用 git log 查看提交历史
+要重返未来，使用 git reflog 查看命令历史来确定要回到那个版本
