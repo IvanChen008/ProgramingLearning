@@ -29,5 +29,14 @@ git 命令学习的记录
 
 	在回退前可以 使用 git log 查看提交历史
 	要重返未来，使用 git reflog 查看命令历史来确定要回到那个版本
-
+//工作区和暂存区理解
+	工作区：
+		工作区是指电脑能看到的文件目录
+	版本库：
+		工作区中的隐藏目录.git不算是工作区，是Git的版本库，Git的版本库中存了stage（或者index）
+		Git自动创建一个master分支，和一个指向master的指针HEAD
+		https://cdn.liaoxuefeng.com/cdn/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0
+		
+		
+		
 
