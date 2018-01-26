@@ -1,2 +1,13 @@
 git 命令学习的记录
 
+进入指定的目录生成一个库
+
+cd a/somewhere 
+mkdir /reposiName
+pwd  // 显示当前目录
+
+git init // 初始化一个Git仓库
+
+添加文件到一个仓库
+	1、使用 git add -filename.xxx-
+	2、使用 git commit -m "提交信息....."
