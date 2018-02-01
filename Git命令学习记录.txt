@@ -56,3 +56,17 @@ git 命令学习的记录
 	当你在删除错误的情况下，可以使用 git checkout -- filename.xxx 来恢复文件
 	
 	如果一个文件被提交到版本库了，那么永远不用担心误删，但是要小心只能恢复到最新的版本，你会丢失最近一次提交后你修改的内容。
+//远程仓库
+	我们完全可以自己搭建一台运行Git的服务器，也可以注册一个GitHub账号，就可以免费获得Git远程仓库。
+	1、添加远程库
+	需要关联远程库的时候，使用的命令:
+	 	 git remote add origin git@server-name:path/repositoryname.git;
+		 比如：git remote add origin git@github.com:hewenyuann19930327/vscode-nextgenas.git;
+		 添加关联后，使用命令：
+		 git push -u origin master 
+		 一次推送 master 分支的所有内容；每次本地提交之后，只要有必要，就可以使用命令推送最新的修改到服务器。
+	总结： 分布式版本系统最大的好处之一就是，在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，没网的话只需要等到有网推送一下本地文件就可以同步了。
+	2、从远程库克隆
+		要克隆一个仓库，首先知道地址，在使用命令：
+		git clone git@server-name:path/repositoryname.git;
+		比如：git clone git@github.com:hewenyuann19930327/GitLearnTest.gitgit@github.com:hewenyuann19930327/GitLearnTest.git
