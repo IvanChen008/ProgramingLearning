@@ -8,7 +8,7 @@ EarMaster ��һ�����Ե�����ӳ�������ý��
 
 
 Git is a version control system.
-Git is free software.
+Git is a free software.
 
 Gakki is my wife/
 
