@@ -70,3 +70,5 @@ git 命令学习的记录
 		要克隆一个仓库，首先知道地址，在使用命令：
 		git clone git@server-name:path/repositoryname.git;
 		比如：git clone git@github.com:hewenyuann19930327/GitLearnTest.gitgit@github.com:hewenyuann19930327/GitLearnTest.git
+
+	不得不说，github 的地址不止一个，还可以用https://github.com/path/repositoryname.git; 实际上Git支持多种协议，默认使用git:// 使用ssh，但是也可以使用https等其他协议。
