@@ -90,7 +90,8 @@ git 命令学习的记录
 			c) git branch // 查看分支
 		2) 然后可以在这个分支进行操作和工作 添加文件 (git add name) 和 提交更改 (git commit -m "message"),切换回 master(git checkout master)分支后把dev分支上的成果合并到master分支 (git merge dev)上。
 		当在合并后不需要此分支后可以使用 git branch -d dev 来删除这个分支
-
+	2、解决冲突
+		当Git 无法自动合并分支时，就必须先解决冲突，再提交，合并完成。用git log --graph 命令可以查看分支合并图。
 
 			
 	
