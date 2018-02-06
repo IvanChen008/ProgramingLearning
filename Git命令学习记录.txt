@@ -198,3 +198,7 @@ git 命令学习的记录
 		命令 git push origin <tag-name>推送所有本地尚未推送的标签到远端库
 		使用 git tag -d <tag-name> 可以删除一个本地的标签
 		使用 git push origin :refs/tags/<tag-name> 可以删除一个远端的标签
+//使用GitHub
+	在GitHub上，可以任意fork 开源仓库
+	自己用fork后的仓库的读写权限
+	可以推送pull request 给官方仓库来贡献代码
