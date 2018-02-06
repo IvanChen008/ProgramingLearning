@@ -99,4 +99,74 @@ git 命令学习的记录
 			开发人员都有一个自己的分支，都在自己的分支上开发，时不时往 dev 分支上合并就可以了。
 		总结Git分支十分强大，团队开发中应该充分利用。
 		合并分支时，加上 --no-ff 参数就可以使用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而 Fast-forward 合并就看不出来曾经做过合并。
+<<<<<<< HEAD
 	
+=======
+	4、Bug分支
+		在工作的时候如果需要修复bug，我们就需要建立一个临时分支来修复，修复后合并分支，然后将临时分支删除。
+		当接到bug修复任务时，自然的需要建立一个临时的bug 分支来进行修复，但是此时dev分支下正在开发的工作还没有提交，但是短时间工作又完不成，bug修复任务又比较急，
+		这时候就可以使用stash 功能，我们可以把工作现场“储藏”起来，等以后恢复现场后继续工作。
+		使用 git stash 把现场“储藏”一下，然后修复bug，修复后 使用 git stash list 中查看 stash 。使用 git stash pop 回到工作现场同时删除 stash。
+			关于stash 的理解，没有执行add操作处于stage状态的文件是会显示在各个分支中的会让你感到迷惑。在执行add 操作使文件进入stage暂存区的时候，文件在各个分支中是可见的，并且无法被stash的，
+			所以stash起作用的全是stage或者head的文件，官网：也就是被你修改过得被追踪文件和暂存的变更---并将它保存到一个未完结的变更的堆栈中，随时可以重新应用。
+	5、Feature分支
+		在添加新功能时最好新建一个feature分支，在上面开发，完成后合并最后删除该分支。
+		如果需要丢弃一个没有被合并的分支，可以通过 git branch -D <name> 强行删除。
+	6、多人协作
+		在从远程克隆的时候，实际上把本地的master分支和远程的master分支对应起来了，并且远程的仓库默认的名称是origin：
+		$ git remote
+
+		---------------------
+		origin
+		---------------------		
+	或者使用
+		$ git remote -v
+		---------------------
+		origin git@github.com:hewenyuann19930327/ProgramingLearning.git(fetch)
+		origin git@github.com:hewenyuann19930327/ProgramingLearning.git(push)
+		---------------------
+		显示了可以抓取和推送的origin 的地址。如果没有推送权限，就看不到push的地址。
+		
+		推送分支
+			就是把分支上的所有本地提交推送到远程库。推送时指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
+		
+		$ git push origin master
+		推送其他分支的时候比如：dev 就改成
+		$ git push origin dev 
+
+		但是不是一定要把本地分支推送到远程仓库，一般来说：master 是主分支，因此要时刻与远程同步；dev是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；bug分支只用于在本地修复bug，
+		就没必要推送到远程了，feature分支是否推送到远程，取决于你是否和你的小伙伴合作在上面开发。
+
+		抓取分支
+			多人协作时，大家都会往master 和dev 分支上推送各自的修改。当你的小伙伴从远程库clone时，默认情况下，小伙伴只能看到本地的master分支。现在小伙伴要在dev分支上开发，
+			就必须创建远程origin 的dev分支到本地于是需要用到这个命令：
+			$ git checkout -b dev origin/dev
+			现在就可以在dev 上开发了，值得注意的是推送失败如果你试图推送的提交有冲突，解决办法也很简单，先用git pull 把最新的提交从 origin/dev 抓取下来，然后，在本地合并，解决冲突，再推送。
+			git pull 失败了原因是没有指定本地 dev 分支与远程 origin/dev 分支的链接，根据提示，设置 dev 和 origin/dev 的链接：
+			$ git branch --set-upstream dev origin/dev
+			----------------------
+			Branch dev set up to tarck remote branch dev from origin
+			----------------------
+			这之后再pull：
+			$ git pull
+			---------------------
+			Auto-merging hello.py
+			CONFLICT (content):Merge conflict in hello.py
+			Automatic merge failed:fix conflicts and then commit the result.
+			---------------------
+			这回git pull 成功了，但是合并有冲突，需要手动解决，解决的方法和分支管理中的解决冲突完全一样，解决以后再提交，再push。
+		多人协作的工作模式通常是这样：
+			1、首先，可以视图用 git push origin branch-name 推送自己的修改；
+			2、如果推送失败，则因为远程分支比你的本地更新，需要先用 git pull 试图合并；
+			3、如果合并有冲突，则解决冲突，并在本地提交；
+			4、没有冲突或者解决掉冲突后，再用 git push origin branch-name 推送就能成功！
+		如果 git pull 提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令 git branch --set-upstream branch-name origin/branch-name 。
+
+		小结：
+			查看远程库信息，使用 git remote -v ；
+			本地新建的分支如果不推送到远程，对其他人就是不可见的；
+			本地推送分支，使用 git push origin branch-name ，如果 推送失败，先用 git pull 抓取远程的新提交；
+			本地创建和远程分支对应的分支，使用 git checkout -b branch-name origin/branch-name ,本地和远程分支的名称最好一致；
+			建立本地分支和远程分支的关联，使用 git branch --set-upstream branch-name origin/branch-name；
+			从远程抓取分支，使用 git pull ，如果有冲突，要先处理冲突。
+>>>>>>> refs/remotes/origin/dev
