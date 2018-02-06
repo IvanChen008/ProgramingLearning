@@ -109,6 +109,20 @@ git 命令学习的记录
 	5、Feature分支
 		在添加新功能时最好新建一个feature分支，在上面开发，完成后合并最后删除该分支。
 		如果需要丢弃一个没有被合并的分支，可以通过 git branch -D <name> 强行删除。
+	6、多人协作
+		在从远程克隆的时候，实际上把本地的master分支和远程的master分支对应起来了，并且远程的仓库默认的名称是origin：
+		$ git remote
 
+		---------------------
+		origin
+		---------------------		
+	或者使用
+		$ git remote -v
+		---------------------
+		origin git@github.com:hewenyuann19930327/ProgramingLearning.git(fetch)
+		origin git@github.com:hewenyuann19930327/ProgramingLearning.git(push)
+		---------------------
+		显示了可以抓取和推送的origin 的地址。如果没有推送权限，就看不到push的地址。
 		
-	
+		推送分支
+		
