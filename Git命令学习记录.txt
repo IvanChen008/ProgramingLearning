@@ -202,3 +202,12 @@ git 命令学习的记录
 	在GitHub上，可以任意fork 开源仓库
 	自己用fork后的仓库的读写权限
 	可以推送pull request 给官方仓库来贡献代码
+//搭建Git 服务器
+	搭建Git服务器需要准备一台运行Linux的机器，强烈推荐Ubuntu和Debian这样通过几条简单的apt命令就可以完成安装了。
+	假设你已经有了 sudo 权限的用户账号，下面，正式开始安装。
+	第一步，安装 git ：
+	$ sudo apt-get install git 
+	第二步，创建一个 git 用户，用来运行 git 服务：
+	$ sudo adduser git 
+	第三步，创建证书登录：
+	收集所有需要登陆的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有的公钥导入到 /home/git/.ssh/authorized_keys
