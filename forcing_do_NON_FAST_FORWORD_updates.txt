@@ -1,0 +1,15 @@
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/hewenyuann19930327/ZYH.Operation.Sys.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+Chapter 45. Forcing git fetch to do non-fast-forward updates
+If git fetch fails because the new head of a branch is not a descendant of the old head, you may force the update with:
+
+$ git fetch git://example.com/proj.git +master:refs/remotes/example/master
+Note the addition of the + sign. Alternatively, you can use the -f flag to force updates of all the fetched branches, as in:
+
+$ git fetch -f origin
+Be aware that commits that the old version of example/master pointed at may be lost, as we saw in the previous section.
