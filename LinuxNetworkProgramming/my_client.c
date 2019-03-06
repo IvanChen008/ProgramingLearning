@@ -22,19 +22,19 @@
  * fetch the userinfo to save to the buf, the length of buf is len,
  * the data of user inputed end up with the sign of '\n' 
  **************/
-int get_userinfo(char *buf, int len)
-{
+int get_userinfo(char *buf, int len) {
     int i;
     int c;
-
-    if (buf == NULL)
-    {
+    if (buf == NULL) {
         return -1;
     }
 
     i = 0;
-    while ((c = getchar() != '\n') && (c != EOF) && (i < len - 2))
-    {
+    /** 
+     *  // while ((ch = getchar() != '\n'))
+     *  is wrong. 
+     */
+    while ((c = getchar()) != '\n' && (c != EOF) && (i < len - 2)) {
         buf[i++] = c;
     }
     buf[i++] = '\n';
@@ -44,35 +44,33 @@ int get_userinfo(char *buf, int len)
 }
 
 /* input username,then send it by fd  */
-void input_userinfo(int conn_fd, const char *string)
-{
+void input_userinfo(int conn_fd, const char *string) {
     char input_buf[32];
     char recv_buf[BUFSIZE];
     int flag_userinfo;
 
     // input userinfo until the info is right
-    do
-    {
+    do {
         printf("%s", string);
-        if (get_userinfo(input_buf, 32) < 0)
-        {
+        if (get_userinfo(input_buf, 32) < 0) {
             printf("error return from get_userinfo\n");
             exit(1);
+        } else {
+            printf("input_bur: %s \n", input_buf);
+            puts(input_buf);
         }
+        
 
-        if (send(conn_fd, input_buf, strlen(input_buf), 0) < 0)
-        {
+        if (send(conn_fd, input_buf, strlen(input_buf), 0) < 0) {
             my_err("send", __LINE__);
         }
 
-        if (my_recv(conn_fd, recv_buf, sizeof(recv_buf)) < 0)
-        {
+        if (my_recv(conn_fd, recv_buf, sizeof(recv_buf)) < 0) {
             printf("data is too long \n");
             exit(1);
         }
 
-        if (recv_buf[0] == VALID_USERINFO)
-        {
+        if (recv_buf[0] == VALID_USERINFO) {
             flag_userinfo = VALID_USERINFO;
         } else {
             printf("%s error, input again,", string);
@@ -82,8 +80,7 @@ void input_userinfo(int conn_fd, const char *string)
     } while (flag_userinfo == INVALID_USERINFO);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int i;
     int ret;
     int conn_fd;
@@ -92,8 +89,7 @@ int main(int argc, char *argv[])
     char recv_buf[BUFSIZE];
 
     /* check number of arguments */
-    if (argc != 5)
-    {
+    if (argc != 5) {
         printf("Usage: [-p] [serv_port] [-a] [serv_address] \n");
         exit(1);
     }
@@ -155,5 +151,4 @@ int main(int argc, char *argv[])
     close(conn_fd);
     return 0;
     
-
 }

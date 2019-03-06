@@ -66,7 +66,7 @@ int main() {
     socklen_t cli_len;
     struct sockaddr_in cli_addr, serv_addr;
     char recv_buf[128];
-
+    // create a TCP socket
     sock_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (sock_fd < 0) {
         my_err("socket", __LINE__);
@@ -129,7 +129,7 @@ int main() {
                 } else if (flag_recv == PASSWORD) {
                     if (strcmp(users[name_num].password, recv_buf) == 0) {
                         send_data(conn_fd, "y\n");
-                        send_data(conn_fd, "Welcome login my TCP server");
+                        send_data(conn_fd, "Welcome login my TCP server\n");
                         printf("%s login\n", users[name_num].username);
                         break;
                     } else {
