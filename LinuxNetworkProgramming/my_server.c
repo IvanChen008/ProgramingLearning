@@ -3,6 +3,7 @@
  * author: ivanchem 
  * purpose: learning Linux C programming 
  * name: my_server.c
+ * test: for git test
  *****************************/
 #include <sys/types.h>
 #include <sys/socket.h>
