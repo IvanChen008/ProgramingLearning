@@ -2,7 +2,7 @@
  * time: 2019/03/07
  * author: IvanChan
  * name: RandW.c
- * purpose: learning to handle file on the linux operate system.
+ * purpose: learning to handling file on the linux operate system.
  ******************/
 
 #include <unistd.h>
@@ -83,7 +83,7 @@ int my_read(int fd) {
 
 int main() {
     int fd;
-    char write_buf[32] = "Hello, World!Hello, World!";
+    char write_buf[32] = "Hello, World! IvanChan @_@ ~~ :D";
 
     //if ((fd = creat("example_63.c", S_IRWXU)) == -1) {
     if ((fd = open("example_63.c", O_RDWR|O_CREAT|O_TRUNC, S_IRWXU)) == -1) {
