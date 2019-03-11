@@ -25,14 +25,14 @@
 int g_leave_len	= MAXROWLEN;
 int g_maxlen;
 
-/*   */
+/* 错误处理函数，调试时输出错误所在的行数  */
 void my_err(const char *err_string, int line) {
 	fprintf(stderr, "line: %d\n", line);
 	perror(err_string);
 	exit(1);
 }
 
-/*  */
+/* 输出文件的属性，而且进行格式化处理 */
 void display_attribute(struct stat buf, char * name) {
 	char buf_time[32];
 	struct passwd *psd;
